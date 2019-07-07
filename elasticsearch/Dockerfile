@@ -18,7 +18,7 @@ RUN grep ES_DISTRIBUTION_TYPE=tar /usr/share/elasticsearch/bin/elasticsearch-env
 RUN mkdir -p config data logs
 RUN chmod 0775 config data logs
 
-COPY config/elasticsearch.yml config/log4j2.properties config/
+COPY config/elasticsearch.yml config/
 
 RUN for iter in {1..10}; do yum update -y && \
     yum install -y nc unzip wget which && \
