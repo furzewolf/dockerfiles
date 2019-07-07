@@ -79,7 +79,7 @@ LABEL org.label-schema.schema-version="1.0" \
   org.label-schema.vcs-url="https://github.com/elastic/elasticsearch" \
   license="Elastic License"
 
-RUN sed -i "s|10-:-XX:UseAVX=2||g" /etc/elasticsearch/jvm.options
+RUN sed -i "s|10-:-XX:UseAVX=2||g" /usr/share/elasticsearch/config/jvm.options
 
 ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
 # Dummy overridable parameter parsed by entrypoint
