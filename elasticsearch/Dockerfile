@@ -20,10 +20,7 @@ RUN chmod 0775 config data logs
 
 COPY config/elasticsearch.yml config/
 
-RUN for iter in {1..10}; do yum update -y && \
-    yum install -y nc unzip wget which && \
-    yum clean all && exit_code=0 && break || exit_code=$? && echo "yum error: retry $iter in 10s" && sleep 10; done; \
-    (exit $exit_code)
+RUN yum install -y nc unzip wget which
 
 RUN groupadd -f -g 1000 elasticsearch || true
 RUN adduser -u 1000 -g 1000 -G 0 -d /usr/share/elasticsearch elasticsearch || true
