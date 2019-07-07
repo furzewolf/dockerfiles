@@ -30,8 +30,6 @@ RUN adduser -u 1000 -g 1000 -G 0 -d /usr/share/elasticsearch elasticsearch || tr
 RUN chmod 0775 /usr/share/elasticsearch && \
     chgrp 0 /usr/share/elasticsearch
 
-WORKDIR /usr/share/elasticsearch
-COPY --from=builder --chown=1000:0 /usr/share/elasticsearch /usr/share/elasticsearch
 ENV PATH /usr/share/elasticsearch/bin:$PATH
 
 COPY --chown=1000:0 bin/docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
