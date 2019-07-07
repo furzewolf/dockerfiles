@@ -18,11 +18,6 @@ ENV JAVA_HOME /opt/jdk-12.0.1
 
 RUN yum install -y java-11-openjdk.armv7hl
 
-# Replace OpenJDK's built-in CA certificate keystore with the one from the OS
-# vendor. The latter is superior in several ways.
-# REF: https://github.com/elastic/elasticsearch-docker/issues/171
-RUN ln -sf /etc/pki/ca-trust/extracted/java/cacerts /opt/jdk-12.0.1/lib/security/cacerts
-
 RUN yum install -y unzip which
 
 RUN groupadd -g 1000 elasticsearch && \
