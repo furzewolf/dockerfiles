@@ -25,9 +25,9 @@ RUN for iter in {1..10}; do yum update -y && \
     yum clean all && exit_code=0 && break || exit_code=$? && echo "yum error: retry $iter in 10s" && sleep 10; done; \
     (exit $exit_code)
 
-RUN groupadd -g 1000 elasticsearch && \
-    adduser -u 1000 -g 1000 -G 0 -d /usr/share/elasticsearch elasticsearch && \
-    chmod 0775 /usr/share/elasticsearch && \
+RUN groupadd -f -g 1000 elasticsearch || true
+RUN adduser -u 1000 -g 1000 -G 0 -d /usr/share/elasticsearch elasticsearch || true
+RUN chmod 0775 /usr/share/elasticsearch && \
     chgrp 0 /usr/share/elasticsearch
 
 WORKDIR /usr/share/elasticsearch
