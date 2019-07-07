@@ -43,9 +43,9 @@ COPY config/elasticsearch.yml config/log4j2.properties config/
 FROM centos:7
 
 ENV ELASTIC_CONTAINER true
-ENV JAVA_HOME /opt/jdk-12.0.1
+ENV JAVA_HOME /usr/lib/jvm/java-11-openjdk-11.0.3.7-0.el7_6.arm/
 
-COPY --from=builder /opt/jdk-12.0.1 /opt/jdk-12.0.1
+COPY --from=builder /usr/lib/jvm/java-11-openjdk-11.0.3.7-0.el7_6.arm/ /usr/lib/jvm/java-11-openjdk-11.0.3.7-0.el7_6.arm/
 
 RUN for iter in {1..10}; do yum update -y && \
     yum install -y nc unzip wget which && \
